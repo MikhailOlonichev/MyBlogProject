@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  postgres_db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: blog_db
+      POSTGRES_USER: blog_admin
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  django_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "0.0.0.0:8000:8000"
+    depends_on:
+      - postgres_db
+    environment:
+      DJANGO_DB_HOST: postgres_db
+      DJANGO_DB_PORT: 5432
+      DJANGO_DB_NAME: blog_db
+      DJANGO_DB_USER: blog_admin
+      DJANGO_DB_PASSWORD: 1234
+
+volumes:
+  postgres_data:
