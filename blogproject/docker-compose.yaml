@@ -17,6 +17,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
+    volumes:
+      - .:/app
     restart: always
     ports:
       - "0.0.0.0:8000:8000"

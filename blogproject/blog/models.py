@@ -4,13 +4,20 @@ from django.db import models
 
 # Create your models here.
 
-# class Post(models.Model):
-#     title = models.CharField(max_length=255)
-#     content = models.TextField(blank=True)
-#     # author = models.ForeignKey(User, on_delete=models.CASCADE)  КАК ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ
-#     create_time = models.DateTimeField(auto_now_add=True)
-#     update_time = models.DateTimeField(auto_now=True)
-#
-#
-# class Image(models.Model):
-#     pass
+class Post(models.Model):
+    '''information about post'''
+    title = models.CharField(max_length=255)
+    content = models.TextField(blank=True)
+    create_time = models.DateField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+
+class Image(models.Model):
+    post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField()
+
+    def __str__(self):
+        return f'/image for {self.post.title}'
