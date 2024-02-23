@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3b99081-5f72-4b46-9885-40095cf2039e" name="Changes" comment="Первые проблемы">
-      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0004_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogproject/blog/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogproject/blog/urls.py" afterDir="false" />
+    <list default="true" id="b3b99081-5f72-4b46-9885-40095cf2039e" name="Changes" comment="Добавлены первые модели и сериализаторы">
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0005_alter_image_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/permissions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogproject/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogproject/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/blog/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blogproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blogproject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blogproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blogproject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogproject/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogproject/СПИСОКПРОБЛЕМ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/СПИСОКПРОБЛЕМ.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/СПИСОКПРОБЛЕМ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/заметки.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +91,10 @@
       <workItem from="1708265851738" duration="2635000" />
       <workItem from="1708268644345" duration="3041000" />
       <workItem from="1708360808457" duration="7348000" />
-      <workItem from="1708448456185" duration="5102000" />
+      <workItem from="1708448456185" duration="6371000" />
+      <workItem from="1708616346001" duration="4232000" />
+      <workItem from="1708671436588" duration="909000" />
+      <workItem from="1708684601388" duration="8435000" />
     </task>
     <task id="LOCAL-00001" summary="Первый пробный пуш">
       <option name="closed" value="true" />
@@ -118,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708365520532</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Добавлены первые модели и сериализаторы">
+      <option name="closed" value="true" />
+      <created>1708453619045</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708453619045</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +138,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Первый пробный пуш" />
     <MESSAGE value="Первые проблемы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первые проблемы" />
+    <MESSAGE value="Добавлены первые модели и сериализаторы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены первые модели и сериализаторы" />
   </component>
 </project>
