@@ -31,3 +31,12 @@ class PostDestroyView(generics.RetrieveDestroyAPIView):
 class ImageUploadView(APIView):
     pass
 
+class CommentListCreateView(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
+# class CommentDetailView(generics.RetrieveUpdateAPIView):
+    # queryset = Comment.objects.all()
+    # serializer_class = CommentSerializer
+    # permission_classes = (IsOwnerOrReadOnly, )
