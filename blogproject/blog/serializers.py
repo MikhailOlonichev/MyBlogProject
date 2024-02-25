@@ -8,7 +8,7 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = ('id', 'image')
 
 class PostSerializer(serializers.ModelSerializer):
-    # images = ImageSerializer(many=True, read_only=True) для работы с моделями
+    images = ImageSerializer(many=True, read_only=True)
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Post
