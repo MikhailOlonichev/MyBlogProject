@@ -7,14 +7,17 @@ class ImageSerializer(serializers.ModelSerializer):
         model = Image
         fields = ('id', 'image')
 
-class PostSerializer(serializers.ModelSerializer):
-    images = ImageSerializer(many=True, read_only=True)
-    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    class Meta:
-        model = Post
-        fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+
+class PostSerializer(serializers.ModelSerializer):
+    images = ImageSerializer(many=True, read_only=True)
+    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    comments = CommentSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Post
+        fields =  ('id', 'author', 'title', 'content', 'create_time', 'comments')

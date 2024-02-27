@@ -19,8 +19,10 @@ urlpatterns = [
     path('posts/comment/', CommentListCreateView.as_view(), name='post_comment'),
 
 
+
     path('images/', ImageView.as_view(), name='image-create'),
 
     # path('create/<int:pk>/', PostDetailView.as_view(), name='comment_detail'),
+
     # path('images/upload/', ImageUploadView.as_view(), name='image-upload'),
 ]
