@@ -11,6 +11,12 @@ class Post(models.Model):
     create_time = models.DateField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-create_time']
+        indexes = [
+            models.Index(fields=['-create_time']),
+        ]
+
     def __str__(self):
         return self.title
 
@@ -29,9 +35,9 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['created']
+        ordering = ['-created']
         indexes = [
-            models.Index(fields=['created']),
+            models.Index(fields=['-created']),
         ]
 
     def __str__(self):
