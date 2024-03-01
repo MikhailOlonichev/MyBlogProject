@@ -4,33 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3b99081-5f72-4b46-9885-40095cf2039e" name="Changes" comment="Добавлены первые модели и сериализаторы">
-      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0007_alter_image_image.py" afterDir="false" />
+    <list default="true" id="b3b99081-5f72-4b46-9885-40095cf2039e" name="Changes" comment="Внесены изображения">
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0009_merge_20240227_1627.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0010_alter_comment_options_alter_post_options_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0011_delete_comment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0012_comment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0013_alter_comment_options_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/blog/migrations/0014_image_author.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/blog/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/blogproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/blogproject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/заметки.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dockerfile" />
-        <option value="HTML File" />
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ImageThings" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,26 +47,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Comment",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
-  </component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -84,48 +76,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708179184003</updated>
-      <workItem from="1708179185911" duration="4266000" />
-      <workItem from="1708265851738" duration="2635000" />
-      <workItem from="1708268644345" duration="3041000" />
-      <workItem from="1708360808457" duration="7348000" />
-      <workItem from="1708448456185" duration="6371000" />
-      <workItem from="1708616346001" duration="4232000" />
-      <workItem from="1708671436588" duration="909000" />
-      <workItem from="1708684601388" duration="8435000" />
+      <workItem from="1708179185911" duration="3773000" />
+      <workItem from="1709137929755" duration="9400000" />
+      <workItem from="1709210219517" duration="4647000" />
     </task>
-    <task id="LOCAL-00001" summary="Первый пробный пуш">
-      <option name="closed" value="true" />
-      <created>1708183718483</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1708183718483</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Первый пробный пуш">
-      <option name="closed" value="true" />
-      <created>1708183916835</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1708183916835</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Первые проблемы">
-      <option name="closed" value="true" />
-      <created>1708365520532</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1708365520532</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Добавлены первые модели и сериализаторы">
-      <option name="closed" value="true" />
-      <created>1708453619045</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1708453619045</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,9 +87,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Первый пробный пуш" />
-    <MESSAGE value="Первые проблемы" />
-    <MESSAGE value="Добавлены первые модели и сериализаторы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены первые модели и сериализаторы" />
   </component>
 </project>

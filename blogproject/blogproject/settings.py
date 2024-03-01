@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'blogproject.urls'
@@ -88,12 +92,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-# DATABASES = {
-#     'default' : {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3'
-#     }
-# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -200,3 +199,20 @@ AWS_S3_REGION_NAME = 'eu-north-1'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# email games
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+# ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Subject: '
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'
+#
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'kingstudy.olonichev@gmail.com'
+# EMAIL_HOST_PASSWORD = 'gorox2281337'
+#
+# AUTHENTICATION_BACKENDS = [
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
