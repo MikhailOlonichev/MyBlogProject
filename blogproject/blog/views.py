@@ -29,9 +29,9 @@ class PostDestroyView(generics.RetrieveDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = (IsAdminOrReadOnly, )
 
-class ImageView(generics.ListCreateAPIView):
-    queryset = Image.objects.all()
-    serializer_class = ImageSerializer
+# class ImageView(generics.ListCreateAPIView):
+    # queryset = Image.objects.all()
+    # serializer_class = ImageSerializer
 
 class CommentListCreateView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()

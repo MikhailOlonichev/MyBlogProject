@@ -20,7 +20,7 @@ urlpatterns = [
 
 
 
-    path('images/', ImageView.as_view(), name='image-create'),
+    # path('images/', ImageView.as_view(), name='image-create'),
 
     # path('create/<int:pk>/', PostDetailView.as_view(), name='comment_detail'),
 
