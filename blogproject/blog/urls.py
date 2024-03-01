@@ -4,11 +4,10 @@ from rest_framework_simplejwt.views import *
 from .views import *
 
 urlpatterns = [
-    path('posts/', PostListCreateView.as_view(), name='post-list-create'),
-    path('posts/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
-    path('postsdelete/<int:pk>', PostDestroyView.as_view()),
+    path('posts/', PostList.as_view(), name='post-list-create'),
+    path('posts/<int:pk>/', PostDetail.as_view(), name='post-detail'),
 
-    path('session-auth/', include('rest_framework.urls')),   #авторизация по сессии
+    path('api-auth/', include('rest_framework.urls')),   #авторизация по сессии
 
     path('auth/', include('djoser.urls')),
 
@@ -16,8 +15,14 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
-    path('posts/comment/', CommentListCreateView.as_view(), name='post_comment'),
+    path('comments/', CommentList.as_view()),
+    path('comments/<int:pk>/', CommentDetail.as_view()),
 
+    path('images/', ImageList.as_view(), name='image-create'),
+    path('images/<int:pk>/', ImageDetail.as_view()),
+
+
+    #path('accounts/', include('allauth.urls')),
 
 
     # path('images/', ImageView.as_view(), name='image-create'),
