@@ -211,7 +211,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'kingstudy.olonichev@gmail.com'
-# EMAIL_HOST_PASSWORD = 'gorox2281337'
+# EMAIL_HOST_PASSWORD = ''
 #
 # AUTHENTICATION_BACKENDS = [
 #     'allauth.account.auth_backends.AuthenticationBackend',
