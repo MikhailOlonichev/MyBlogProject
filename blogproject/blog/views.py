@@ -32,10 +32,16 @@ class ImageList(generics.ListCreateAPIView):
     serializer_class = ImageSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
+
 class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
     permission_classes = (IsOwnerOrReadOnly,)
+
+# class ImageView(generics.ListCreateAPIView):
+    # queryset = Image.objects.all()
+    # serializer_class = ImageSerializer
+
 
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()

@@ -10,6 +10,7 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     create_time = models.DateField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
 
     class Meta:
         ordering = ['-create_time']
@@ -26,8 +27,13 @@ class Image(models.Model):
     image = models.ImageField(upload_to='post_images/')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'Image for {self.post.title}'
+# class Image(models.Model):
+    # post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
+    # image = models.ImageField(upload_to='post_images/')
+
+
+    # def __str__(self):
+        # return f'Image for {self.post.title}'
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')

@@ -21,5 +21,13 @@ urlpatterns = [
     path('images/', ImageList.as_view(), name='image-create'),
     path('images/<int:pk>/', ImageDetail.as_view()),
 
+
     #path('accounts/', include('allauth.urls')),
+
+
+    # path('images/', ImageView.as_view(), name='image-create'),
+
+    # path('create/<int:pk>/', PostDetailView.as_view(), name='comment_detail'),
+
+    # path('images/upload/', ImageUploadView.as_view(), name='image-upload'),
 ]
