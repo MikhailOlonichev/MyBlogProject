@@ -32,16 +32,10 @@ class ImageList(generics.ListCreateAPIView):
     serializer_class = ImageSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
-
 class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
     permission_classes = (IsOwnerOrReadOnly,)
-
-# class ImageView(generics.ListCreateAPIView):
-    # queryset = Image.objects.all()
-    # serializer_class = ImageSerializer
-
 
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
@@ -58,8 +52,8 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
 
 # @receiver(user_signed_up)
 # def user_signed_up_handler(request, user, **kwargs):
-#     subject = 'Приветствую тебя, Путник'
-#     message = 'ТЕПЕРЬ ТЫ ЧАСТЬ ЭТОГО ЦИРКА!'
+#     subject = 'Приветствую тебя'
+#     message = 'qwerty!'
 #     from_email = 'kingstudy.olonichev@gmail.com'
 #     to_email = user.email
 #
