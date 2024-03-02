@@ -8,6 +8,9 @@ from rest_framework.views import APIView
 from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from .serializers import *
 from rest_framework.response import Response
+from django.shortcuts import redirect
+from rest_framework import permissions
+from django.contrib.auth import logout
 
 
 class PostListPagination(PageNumberPagination):
@@ -49,6 +52,20 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = (IsOwnerOrReadOnly, )
 
+class UserPostsListView(generics.ListAPIView):
+    serializer_class = PostSerializer
+    permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        user = self.request.user
+        return Post.objects.filter(author=user)
+    
+class LogoutView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        logout(request)
+        return redirect('/api/api-auth/login')
 
 # @receiver(user_signed_up)
 # def user_signed_up_handler(request, user, **kwargs):

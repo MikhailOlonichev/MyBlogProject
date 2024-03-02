@@ -1,14 +1,15 @@
 from django.urls import path, include, re_path
-from rest_framework_simplejwt.views import *
-
+from rest_framework_simplejwt.views import *                                        
 from .views import *
 
 urlpatterns = [
     path('posts/', PostList.as_view(), name='post-list-create'),
     path('posts/<int:pk>/', PostDetail.as_view(), name='post-detail'),
-
-    path('api-auth/', include('rest_framework.urls')),   #авторизация по сессии
-
+    
+    path('api-auth/logout/', LogoutView.as_view(), name='logout'),
+    path('api-auth/', include('rest_framework.urls')), 
+    path('user-posts/', UserPostsListView.as_view(), name='user-posts-list'),
+    
     path('auth/', include('djoser.urls')),
 
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

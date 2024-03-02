@@ -200,6 +200,8 @@ AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+LOGIN_REDIRECT_URL = 'user-posts-list'
+
 # email games
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
