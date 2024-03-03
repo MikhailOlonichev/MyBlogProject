@@ -1,16 +1,12 @@
-from django.core.mail import send_mail
-from django.dispatch import receiver
-from allauth.account.signals import user_signed_up
-from rest_framework import generics
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from rest_framework import generics, status, permissions
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
 from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from .serializers import *
 from rest_framework.response import Response
-from django.shortcuts import redirect
-from rest_framework import permissions
-from django.contrib.auth import logout
 
 
 class PostListPagination(PageNumberPagination):
@@ -24,12 +20,14 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = PostListPagination
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (IsOwnerOrReadOnly, )
-    #authentication_classes = (TokenAuthentication, )  #разрешает аутентификацию только по токенам
-
+     
 class ImageList(generics.ListCreateAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
@@ -44,6 +42,7 @@ class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = (IsAuthenticatedOrReadOnly, )
+    
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
@@ -67,11 +66,12 @@ class LogoutView(APIView):
         logout(request)
         return redirect('/api/api-auth/login')
 
-# @receiver(user_signed_up)
-# def user_signed_up_handler(request, user, **kwargs):
-#     subject = 'Приветствую тебя'
-#     message = 'qwerty!'
-#     from_email = 'kingstudy.olonichev@gmail.com'
-#     to_email = user.email
-#
-#     send_mail(subject, message, from_email, [to_email])
+class RegisterUser(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response("User created successfully", status=status.HTTP_201_CREATED)
