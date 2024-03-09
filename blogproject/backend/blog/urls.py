@@ -23,5 +23,6 @@ urlpatterns = [
     path('images/', ImageList.as_view(), name='image-create'),
     path('images/<int:pk>/', ImageDetail.as_view()),
 
-    path('register/', RegisterUser.as_view(), name='register')
+    path('register/', RegisterUser.as_view(), name='register'),
+    path('test/', SendSomeData.as_view(), name='test'),
 ]
