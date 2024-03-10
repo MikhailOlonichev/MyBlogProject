@@ -75,3 +75,9 @@ class RegisterUser(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response("User created successfully", status=status.HTTP_201_CREATED)
+
+class SendSomeData(APIView):
+    def get(self, request):
+        return Response({
+            "data": "Hello from django backend!!!!"
+        })
