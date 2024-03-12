@@ -33,8 +33,9 @@ CORS_ALLOWED_ORIGINS = [
     'http://0.0.0.0',
     'http://localhost:3000',
 ]
-
+APPEND_SLASH = False
 CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
