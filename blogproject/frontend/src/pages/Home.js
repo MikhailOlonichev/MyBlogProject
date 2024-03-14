@@ -1,27 +1,45 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Home = () => {
-
-    const [username, setUsername] = useState('');
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        (
-            async () => {
-                const response = await fetch('http://localhost:8000/api/user/', {
-                    headers: {'Content-Type': 'application/json'},
-                    credentials: 'include',
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/user/', {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+                        'Content-Type': 'application/json',
+                    },
                 });
 
-                const content = await response.json();
-
-                setUsername(content.username);
+                if (response.status === 200) {
+                    setUserData(response.data);
+                } else {
+                    console.error('Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('An error occurred during data fetching');
             }
-        )();
-    });
+        };
+
+        fetchData();
+    }, []);
+
+    console.log(userData);
 
     return (
         <div>
-            {username ? 'Hello' + username : 'You are not logged in!'}
+            <h1>Profile</h1>
+            {userData ? (
+                <div>
+                    <p>Username: {userData.username}</p>
+                    <p>Email: {userData.email}</p>
+                </div>
+            ) : (
+                <p>Unauthorized.</p>
+            )}
         </div>
     );
 };

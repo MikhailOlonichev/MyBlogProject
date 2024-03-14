@@ -33,8 +33,24 @@ CORS_ALLOWED_ORIGINS = [
     'http://0.0.0.0',
     'http://localhost:3000',
 ]
-APPEND_SLASH = False
+
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',  # Разрешение заголовка Authorization
+    'content-type',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 
 # Application definition
@@ -48,8 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'rest_framework',
-    'rest_framework.authtoken',
-    'djoser',
+    'rest_framework_simplejwt',
     'corsheaders',
 ]
 
@@ -153,17 +168,14 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        #'rest_framework.authentication.TokenAuthentication', #по токенам djosera
         'rest_framework_simplejwt.authentication.JWTAuthentication',  # JWT токены, дальше уже по документации
-        'rest_framework.authentication.BasicAuthentication',  # аутентификация по сессиям
-        'rest_framework.authentication.SessionAuthentication',   # тоже по сессиям
     ]
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "ROTATE_REFRESH_TOKENS": False,
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
 
@@ -209,3 +221,9 @@ AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 LOGIN_REDIRECT_URL = 'user-posts-list'
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30)
+}
