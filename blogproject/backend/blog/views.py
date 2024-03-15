@@ -1,5 +1,7 @@
+from django.contrib.auth.password_validation import validate_password
+from django.core.validators import validate_email, RegexValidator
 from rest_framework import generics, status, permissions
-from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
@@ -72,10 +74,25 @@ class UserPostsListView(generics.ListAPIView):
 class RegisterView(APIView):
     @csrf_exempt
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        username = request.data.get('username')
+        password = request.data.get('password')
+        email = request.data.get('email')
+        try:
+            validate_email(email)
+            validate_password(password)
+            username_validator = RegexValidator(r'^[A-Za-z0_-]+$', message="Username can only contain letters, numbers, and underscores.")
+            username_validator(username)
+        except ValidationError as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+
+        # serializer = UserSerializer(data=request.data)
+        # serializer.is_valid(raise_exception=True)
+        # serializer.save()
+        # return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class UserView(APIView):
@@ -113,10 +130,3 @@ class LogoutView(APIView):
             'message': 'Succesful logout!'
         }
         return response
-
-
-# class SendSomeData(APIView):
-#     def get(self, request):
-#         return Response({
-#             "data": "Hello from django backend!!!!"
-#         })

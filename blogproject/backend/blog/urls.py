@@ -19,7 +19,7 @@ urlpatterns = [
     path('images/', ImageList.as_view(), name='image-create'),
     path('images/<int:pk>/', ImageDetail.as_view()),
 
-    path('test/', SendSomeData.as_view(), name='test'),
+    #path('test/', SendSomeData.as_view(), name='test'),
 
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', TokenObtainPairView.as_view(), name='login'),

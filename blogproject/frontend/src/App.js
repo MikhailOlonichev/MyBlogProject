@@ -1,13 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import Login from "./pages/Login";
 import Nav from "./components/Nav";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
 function App() {

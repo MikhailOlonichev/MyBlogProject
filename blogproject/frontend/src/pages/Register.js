@@ -41,7 +41,7 @@ const Register = () => {
             </div>
 
             <div className="form-floating">
-                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
+                <input type="email" className="form-control" id="floatingEmail" placeholder="name@example.com"
                         onChange={e => setEmail(e.target.value)}
                 />
                 <label htmlFor="floatingInput">Email address</label>
