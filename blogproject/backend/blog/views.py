@@ -82,6 +82,7 @@ class RegisterView(APIView):
             validate_password(password)
             username_validator = RegexValidator(r'^[A-Za-z0_-]+$', message="Username can only contain letters, numbers, and underscores.")
             username_validator(username)
+            
         except ValidationError as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

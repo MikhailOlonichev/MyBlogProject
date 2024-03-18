@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Home = () => {
     const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,24 +22,29 @@ const Home = () => {
                 }
             } catch (error) {
                 console.error('An error occurred during data fetching');
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchData();
     }, []);
 
-    console.log(userData);
-
     return (
         <div>
             <h1>Profile</h1>
-            {userData ? (
-                <div>
-                    <p>Username: {userData.username}</p>
-                    <p>Email: {userData.email}</p>
-                </div>
+            {loading ? (
+                <p>Loading...</p>
             ) : (
-                <p>Unauthorized.</p>
+                userData ? (
+                    <div>
+                         <h2>Welcome, {userData.username}!</h2>
+                        <p>Username: {userData.username}</p>
+                        <p>Email: {userData.email}</p>
+                    </div>
+                ) : (
+                    <p>Unauthorized.</p>
+                )
             )}
         </div>
     );

@@ -1,9 +1,9 @@
-FROM node:21-alpine
+FROM node:21.6.1-alpine
 
 WORKDIR /app
 COPY . .
 
 RUN npm install
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "build"]
 
