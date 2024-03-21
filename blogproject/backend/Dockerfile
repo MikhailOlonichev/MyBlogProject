@@ -12,6 +12,6 @@ COPY . /app
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY ./entrypoint.sh .
-ENTRYPOINT ["sh", "/app/entrypoint.sh"]
+# COPY ./entrypoint.sh .
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]
 

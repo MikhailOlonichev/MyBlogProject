@@ -2,10 +2,12 @@ version: '3'
 
 services:
   postgres_db:
-    image: postgres:alpine
+    image: postgres
     restart: always
-    env_file:
-      - .env
+    environment:
+      POSTGRES_DB: django_db
+      POSTGRES_USER: django_user
+      POSTGRES_PASSWORD: django_password
     ports:
       - '5432:5432'
     volumes:
@@ -16,35 +18,26 @@ services:
       context: ./backend
     volumes:
       - ./backend:/app
-      - ./blogproject/backend/static:/app/static
     restart: always
     ports:
       - "8000:8000"
     depends_on:
       - postgres_db
-    env_file:
-      - .env
+    environment:
+      DJANGO_DB_HOST: postgres_db
+      DJANGO_DB_PORT: 5432
+      DJANGO_DB_NAME: django_db
+      DJANGO_DB_USER: django_user
+      DJANGO_DB_PASSWORD: django_password
   
   frontend:
     build:
       context: ./frontend
     volumes:
       - ./frontend:/app
-      - frontend:/app/build
-
-
-  nginx:
-    build:
-      context: ./nginx
-    volumes:
-      - ./blogproject/backend/static:/app/static
-      - frontend:/var/www/frontend
+    command: npm run start
     ports:
-      - "80:80"
-    depends_on:
-      - backend
-      - frontend
+      - "3000:3000"
    
 volumes:
   postgres_data:
-  frontend:

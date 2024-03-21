@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG =True                                 #    os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*'] # 'localhost', '127.0.0.1', '0.0.0.0'
 
@@ -34,6 +34,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost',
     'http://127.0.0.1',
     'http://0.0.0.0',
+    'http://localhost:3000', 
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -109,12 +110,12 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('POSTGRES_ENGINE'),
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'PORT': os.getenv('POSTGRES_PORT'),
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME': 'django_db',
+        'USER': 'django_user',
+        'PASSWORD': 'django_password',
+        'HOST': 'postgres_db',
+        'PORT': '5432',
     }
 }
 

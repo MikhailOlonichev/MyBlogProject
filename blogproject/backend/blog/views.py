@@ -1,7 +1,7 @@
 from django.contrib.auth.password_validation import validate_password
 from django.core.validators import validate_email, RegexValidator
 from rest_framework import generics, status, permissions
-from rest_framework.exceptions import AuthenticationFailed, ValidationError
+from rest_framework.exceptions import AuthenticationFailed, ValidationError, NotFound
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
@@ -10,7 +10,8 @@ from .serializers import *
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import *
 from rest_framework_simplejwt.exceptions import TokenError
-
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 
 class PostListPagination(PageNumberPagination):
@@ -115,11 +116,17 @@ class UserView(APIView):
 
         except Exception as e:
             raise AuthenticationFailed('Invalid or expired token') from e
-
-        return Response({'user_id': user_id,
-                         'username': request.user.username,
-                         'email': request.user.email
-                         })
+        
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            raise AuthenticationFailed('User does not exist')
+            
+        return Response({
+            'user_id': user_id,
+            'username': user.username,
+            'email': user.email
+        })
 
 
 class LogoutView(APIView):

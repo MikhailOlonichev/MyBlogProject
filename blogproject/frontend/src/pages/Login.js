@@ -11,6 +11,7 @@ const Login = () => {
         username: false,
         password: false
     });
+    const [userNotFound, setUserNotFound] = useState(false); // Новое состояние для отслеживания ошибки "пользователь не найден"
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
@@ -20,6 +21,7 @@ const Login = () => {
                 username: !username,
                 password: !password
             });
+            showToast("Please fill out all fields!");
             return;
         }
 
@@ -29,16 +31,34 @@ const Login = () => {
                 password
             });
 
-            localStorage.setItem('jwt', response.data.access);      //сохранение в хранилище
-            setRedirect(true); // перенаправляем пользователя на домашнюю страницу
+            localStorage.setItem('jwt', response.data.access);
+            setRedirect(true);
         } catch (error) {
-            console.error('An error occurred during authentication:', error);
-            // тут возможно добавление обработки ошибок
+            if (error.response && error.response.status === 401) {
+                console.error('User not found:', error);
+                setUserNotFound(true); // Устанавливаем состояние userNotFound в true, чтобы отобразить сообщение об ошибке
+                setErrors({
+                    username: true,
+                    password: false
+                });
+                showToast("User does not exist! Please register.");
+            } else {
+                console.error('An error occurred during authentication:', error);
+            }
         }
     }
 
+    const showToast = (message: string) => {
+        const toast = document.getElementById('myToast');
+        toast.innerText = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 5000);
+    };
+
     if (redirect) {
-        return <Navigate to="/" replace />;     //конец перенаправления
+        return <Navigate to="/" replace />;
     }
 
     return (
@@ -63,7 +83,31 @@ const Login = () => {
             </div>
 
             <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+
+            {/* Блок для вывода уведомления Toast */}
+            <div 
+                id="myToast" 
+                className="toast align-items-center bg-danger" 
+                role="alert" 
+                aria-live="assertive" 
+                aria-atomic="true" 
+                style={{
+                    fontSize: '1.0rem', 
+                    color: 'white', 
+                    width: '100%', 
+                    textAlign: 'center',
+                    height: '50px',
+                    paddingTop: '10px'
+                }}
+            >
+                <div className="toast-body">
+                    {/* Здесь будет отображаться сообщение об ошибке */}
+                    {userNotFound ? "User does not exist! Please register." : "Please fill out all fields"}
+                </div>
+            </div>
         </form>
     );
 };
+
 export default Login;
+
