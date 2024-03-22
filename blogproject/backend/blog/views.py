@@ -13,6 +13,7 @@ from rest_framework_simplejwt.tokens import *
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 
+
 class PostListPagination(PageNumberPagination):
     page_size = 3
     page_size_query_param = 'page_size'
@@ -141,6 +142,7 @@ class RegisterView(CreateAPIView):
         # return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+
 class UserView(APIView):
     @csrf_exempt
     def get(self, request):
@@ -171,7 +173,6 @@ class UserView(APIView):
             'username': user.username,
             'email': user.email
         })
-
 
 class LogoutView(APIView):
     @csrf_exempt
