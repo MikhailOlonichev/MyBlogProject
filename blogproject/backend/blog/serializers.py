@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import *
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError as DjangoValidationError
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -44,3 +46,21 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+# class UserSerializer(serializers.ModelSerializer):
+#     email = serializers.EmailField()
+#     password = serializers.CharField(write_only=True)
+#
+#     # def validate_password(self, value):
+#     #     try:
+#     #         validate_password(value)
+#     #     except DjangoValidationError as e:
+#     #         raise serializers.ValidationError(str(e))
+#     #     return value
+#
+#     def create(self, validated_data):
+#         user = User.objects.create_user(**validated_data)
+#         return user
+#
+#     class Meta:
+#         model = User
+#         fields = ('id', 'username', 'email', 'password')

@@ -85,16 +85,16 @@ const Login = () => {
             <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>
 
             {/* Блок для вывода уведомления Toast */}
-            <div 
-                id="myToast" 
-                className="toast align-items-center bg-danger" 
-                role="alert" 
-                aria-live="assertive" 
-                aria-atomic="true" 
+            <div
+                id="myToast"
+                className="toast align-items-center bg-danger"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
                 style={{
-                    fontSize: '1.0rem', 
-                    color: 'white', 
-                    width: '100%', 
+                    fontSize: '1.0rem',
+                    color: 'white',
+                    width: '100%',
                     textAlign: 'center',
                     height: '50px',
                     paddingTop: '10px'

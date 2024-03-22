@@ -1,7 +1,7 @@
-from django.contrib.auth.password_validation import validate_password
-from django.core.validators import validate_email, RegexValidator
+
 from rest_framework import generics, status, permissions
 from rest_framework.exceptions import AuthenticationFailed, ValidationError, NotFound
+from rest_framework.generics import CreateAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
@@ -9,8 +9,7 @@ from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import *
-from rest_framework_simplejwt.exceptions import TokenError
-from django.shortcuts import get_object_or_404
+
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 
@@ -72,24 +71,69 @@ class UserPostsListView(generics.ListAPIView):
         return Post.objects.filter(author=user)
 
 
-class RegisterView(APIView):
-    @csrf_exempt
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        email = request.data.get('email')
-        try:
-            validate_email(email)
-            validate_password(password)
-            username_validator = RegexValidator(r'^[A-Za-z0_-]+$', message="Username can only contain letters, numbers, and underscores.")
-            username_validator(username)
-            
-        except ValidationError as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+# class RegisterView(APIView):
+#     @csrf_exempt
+#     def post(self, request):
+#         username = request.data.get('username')
+#         password = request.data.get('password')
+#         email = request.data.get('email')
+#         try:
+#             validate_email(email)
+#             validate_password(password)
+#             username_validator = RegexValidator(r'^[A-Za-z0_-]+$', message="Username can only contain letters, numbers, and underscores.")
+#             username_validator(username)
+#
+#         except ValidationError as e:
+#             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+#
+#         user = User.objects.create_user(username=username, email=email, password=password)
+#         user.save()
+#         return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
 
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
-        return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+# class RegisterView(generics.CreateAPIView):
+#     serializer_class = UserSerializer
+#
+#     def post(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             user = serializer.instance
+#             refresh = RefreshToken.for_user(user)
+#             return Response({
+#                 'refresh': str(refresh),
+#                 'access': str(refresh.access_token),
+#             }, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+class RegisterView(CreateAPIView):
+    serializer_class = UserSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        try:
+            serializer.is_valid(raise_exception=True)
+        except ValidationError as e:
+            errors = dict()
+            for field, error_list in e.detail.items():
+                errors[field] = error_list[0] if isinstance(error_list, list) else error_list  # первая ошибка для каждого поля
+            return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        serializer.save()
+        user = serializer.instance
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }, status=status.HTTP_201_CREATED)
+
+
+
+
 
         # serializer = UserSerializer(data=request.data)
         # serializer.is_valid(raise_exception=True)

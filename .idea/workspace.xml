@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3b99081-5f72-4b46-9885-40095cf2039e" name="Changes" comment="Updated Kan-17,18,19">
+      <change afterPath="$PROJECT_DIR$/blogproject/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogproject/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogproject/backend/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/backend/blog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/backend/blog/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/backend/blog/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/backend/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/backend/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/frontend/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/frontend/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/frontend/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogproject/frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/frontend/src/pages/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogproject/frontend/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogproject/frontend/src/pages/Register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +49,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,6 +90,9 @@
       <workItem from="1710348161329" duration="8254000" />
       <workItem from="1710434125970" duration="11565000" />
       <workItem from="1710495379691" duration="9196000" />
+      <workItem from="1711036878205" duration="7570000" />
+      <workItem from="1711045830620" duration="776000" />
+      <workItem from="1711093113382" duration="16219000" />
     </task>
     <task id="LOCAL-00001" summary="Mail, Images">
       <option name="closed" value="true" />

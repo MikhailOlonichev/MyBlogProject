@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Nav = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -16,15 +18,28 @@ const Nav = () => {
                 setIsLoggedIn(true);
             } catch (error) {
                 setIsLoggedIn(false);
+            } finally {
+                setLoading(false);
             }
         };
+
         checkAuth();
     }, []);
 
     const logout = async () => {
-        await axios.post('http://localhost:8000/api/logout/');
-        setIsLoggedIn(false);
+        try {
+            await axios.post('http://localhost:8000/api/logout/');
+            localStorage.removeItem('jwt');
+            setIsLoggedIn(false);
+            navigate('/login');
+        } catch (error) {
+            console.error('An error occurred during logout:', error);
+        }
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -34,7 +49,7 @@ const Nav = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
                         {isLoggedIn ? (
                             <li className="nav-item">
-                                <Link to="/login" className="nav-link active" onClick={logout}>Logout</Link>
+                                <button className="nav-link active" onClick={logout}>Logout</button>
                             </li>
                         ) : (
                             <>
